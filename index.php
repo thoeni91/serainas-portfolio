@@ -102,19 +102,24 @@ get_header(); ?>
 				
 					<figure>
 						<div class="left">
-							<h2><?php the_title(); ?></h2>
-							<?php if( !empty( $leistungen ) ) { ?>
-								<h3>Leistungen</h3>
-								<p><?php echo $leistungen; ?></p>
-							<?php } ?>
-							<?php if( !empty( $auftrag ) ) { ?>
-								<h3>Auftrag</h3>
-								<p><?php echo $auftrag; ?></p>
-							<?php } ?>
-							<?php if( !empty( $status ) ) { ?>
-								<h3>Status</h3>
-								<p><?php echo $status; ?></p>
-							<?php } ?>
+							<div class="details">
+								<h2><?php the_title(); ?></h2>
+								<?php if( !empty( $leistungen ) ) { ?>
+									<h3>Leistungen</h3>
+									<p><?php echo $leistungen; ?></p>
+								<?php } ?>
+								<?php if( !empty( $auftrag ) ) { ?>
+									<h3>Auftrag</h3>
+									<p><?php echo $auftrag; ?></p>
+								<?php } ?>
+								<?php if( !empty( $status ) ) { ?>
+									<h3>Status</h3>
+									<p><?php echo $status; ?></p>
+								<?php } ?>
+							</div>
+							<div class="excerpt">
+								<?php the_excerpt(); ?>
+							</div>
 						</div>
 						<div class="right">
 							<div class="content">

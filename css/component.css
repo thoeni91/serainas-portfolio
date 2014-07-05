@@ -68,7 +68,7 @@
 /* Slideshow style */
 .slideshow {
 	position: fixed;
-	background: rgba(255,255,255,0.93);
+	background: rgba(255,255,255,0.94);
 	width: 100%;
 	height: 100%;
 	top: 0;
@@ -90,6 +90,7 @@
 }
 
 .slideshow ul {
+	position: relative;
 	width: 100%;
 	height: 100%;
 	margin-top:180px;
