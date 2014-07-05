@@ -1,0 +1,1 @@
+$(window).load(function(){var t=$("#grid-gallery .grid");t.isotope({itemSelector:".item",layoutMode:"masonry"}),$("#filters").on("click","a",function(){var i=$(this).attr("data-filter");t.isotope({filter:i})})});
