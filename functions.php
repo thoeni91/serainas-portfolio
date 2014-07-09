@@ -13,6 +13,7 @@ add_theme_support( 'post-thumbnails' );
 
 /* Image Sizes */
 add_image_size( 'work-small', 346 );
+add_image_size( 'page-thumbnail', 1600, 800, true );
 
 /* Custom Post Type: Work */
 add_action( 'init', 'work_init' );
@@ -153,20 +154,6 @@ function workDetail_save_meta_box_data( $post_id ) {
 }
 add_action( 'save_post', 'workDetail_save_meta_box_data' );
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Register Custom Taxonomy
 function add_types() {
 
@@ -203,5 +190,16 @@ function add_types() {
 
 // Hook into the 'init' action
 add_action( 'init', 'add_types', 0 );
+
+// Adds multiple post thumbnails to pages
+if (class_exists('MultiPostThumbnails')) {
+    new MultiPostThumbnails(
+        array(
+            'label' => 'Bild unten',
+            'id' => 'page-thumbnail-below',
+            'post_type' => 'page'
+        )
+    );
+}
 
 ?>

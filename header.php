@@ -22,6 +22,9 @@
 <!-- jQuery isotope -->
 <script src="<?php bloginfo('template_url'); ?>/js/isotope.pkgd.min.js"></script>
 
+<!-- div js -->
+<script src="<?php bloginfo('template_url'); ?>/js/animateauto.js"></script>
+
 <!-- Functions -->
 <script src="<?php bloginfo('template_url'); ?>/js/functions.js"></script>
 
@@ -32,6 +35,7 @@
 
 <header>
 	<div id="headerContent">
+		
 		<?php wp_nav_menu( array ( 'container' => 'nav') ); ?>
 	</div>
 	<div id="headerImage" style="background-image:url(<?php echo get_header_image(); ?>)"></div>
