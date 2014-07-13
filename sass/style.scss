@@ -134,13 +134,15 @@ header {
 			.details {
 				margin-bottom:25px;
 				border-bottom:1px solid $darkBlue;
-				overflow:scroll;
+				overflow-y:scroll;
 			
-				h2, h3 {
+				h2 {
 					@extend .h2;
 				}
 				
 				h3 {
+					font-family: Brandon Grotesque Bold;
+					text-transform: uppercase;
 					margin-bottom:5px;
 					font-size:20px;
 					letter-spacing: 3px;

@@ -133,7 +133,7 @@ if ( !empty( $terms ) && !is_wp_error( $terms ) ) {
 </div><!-- grid-gallery -->
 </div><!-- work -->
 
-<div id="about" name="about">
+<div id="about">
 <?php
 	// get content of this page
     // WP_Query arguments
@@ -156,7 +156,7 @@ if ( !empty( $terms ) && !is_wp_error( $terms ) ) {
 
 	<div class="thumbnail" style="background-image:url(<?php echo $thumbnailUrl[0]; ?>)"></div>
 	
-	<div class="content">
+	<div class="content" name="about">
 		<h2><?php the_title(); ?></h2>
 		<?php the_content(); ?>
 	</div>

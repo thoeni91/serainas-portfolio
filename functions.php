@@ -171,7 +171,7 @@ function add_types() {
 		'separate_items_with_commas' => '',
 		'search_items'               => 'Types suchen',
 		'add_or_remove_items'        => 'Types hinzufügen oder entfernen',
-		'choose_from_most_used'      => 'Wähle aus meistbenutzen Types',
+		'choose_from_most_used'      => 'Wähle aus meistbenutzten Types',
 		'not_found'                  => 'Nicht gefunden',
 	);
 	

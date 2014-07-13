@@ -90,8 +90,10 @@ header {
   .slideshow figure .left .details {
     margin-bottom: 25px;
     border-bottom: 1px solid #273a4f;
-    overflow: scroll; }
+    overflow-y: scroll; }
     .slideshow figure .left .details h3 {
+      font-family: Brandon Grotesque Bold;
+      text-transform: uppercase;
       margin-bottom: 5px;
       font-size: 20px;
       letter-spacing: 3px; }
@@ -142,7 +144,7 @@ header {
   -webkit-mask-repeat: repeat-x;
   -webkit-mask-size: 100% 100%, 22px 22px, 22px 22px; }
 
-.h2, .slideshow figure .left .details h2, .slideshow figure .left .details h3, #about .content h2, #contact #footer-content .box h2 {
+.h2, .slideshow figure .left .details h2, #about .content h2, #contact #footer-content .box h2 {
   font-family: Brandon Grotesque Bold;
   text-transform: uppercase;
   font-size: 40px;

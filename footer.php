@@ -1,6 +1,6 @@
 <?php wp_footer(); ?>
 
-<footer id="contact" class="contact">
+<footer id="contact" name="contact" class="contact">
 <div id="footer-content">
 	<div id="sayhello" class="box">
 		<h2>Say hello</h2>
