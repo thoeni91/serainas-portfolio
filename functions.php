@@ -13,7 +13,7 @@ add_theme_support( 'post-thumbnails' );
 
 /* Image Sizes */
 add_image_size( 'work-small', 346 );
-add_image_size( 'page-thumbnail', 1600, 800, true );
+add_image_size( 'page-thumbnail', 1600, 1200, true );
 
 /* Custom Post Type: Work */
 add_action( 'init', 'work_init' );
@@ -48,8 +48,10 @@ function work_init() {
 		'capability_type'    => 'post',
 		'has_archive'        => true,
 		'hierarchical'       => false,
-		'menu_position'      => 100,
-		'supports'           => array( 'title', 'editor', 'thumbnail', 'excerpt' )
+		'menu_position'      => 15,
+		'supports'           => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
+		'capability_type' 	 => array('work', 'works'),
+		'map_meta_cap'		 => true
 	);
 
 	register_post_type( 'work', $args );
@@ -183,6 +185,12 @@ function add_types() {
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
+		'capabilities' => array(
+	      'manage_terms'=> 'edit_works',
+	      'edit_terms'=> 'edit_works',
+	      'delete_terms'=> 'edit_works',
+	      'assign_terms' => 'edit_works'
+	    ),
 	);
 	register_taxonomy( 'types', array( 'work' ), $args );
 

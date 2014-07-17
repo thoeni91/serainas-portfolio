@@ -65,7 +65,11 @@ header {
 		width: 100%;
 		line-height: 800px;
 		text-align: center;
-		z-index: 2;
+		z-index: 5;
+		-webkit-transition: background 0.5s ease-in-out;
+		-moz-transition: background 0.5s ease-in-out;
+		-o-transition: background 0.5s ease-in-out;
+		transition: background 0.5s ease-in-out;
 		
 		nav {
 			ul {
@@ -84,6 +88,23 @@ header {
 				
 			}
 		}
+		
+		&.fixed {
+			position: fixed;
+			line-height:normal;
+			padding:30px;
+			background:#fff;
+			
+			nav {
+				ul{
+					li{
+						a {
+							color:$darkBlue;
+						}
+					}
+				}
+			}
+		}
 	}
 
 	#headerImage {
@@ -94,8 +115,15 @@ header {
 		-moz-background-size: cover;
 		-o-background-size: cover;
 		background-size: cover;
-		@extend .zigzag;
+        position:fixed;
+        width:100%;
 	}
+}
+
+#main-container {
+    background:#fff;
+    position:relative;
+    top:800px;
 }
 	
 #work {
@@ -168,11 +196,7 @@ header {
 	.thumbnail {
 		height:800px;
 		background-repeat: no-repeat;
-		background-position: center center;
-		-webkit-background-size: cover;
-		-moz-background-size: cover;
-		-o-background-size: cover;
-		background-size: cover;
+		background-position: 50% 0px;
 		@extend .zigzag;
 	}
 
@@ -238,6 +262,32 @@ header {
 	background:#fff;
 	z-index: 2;
 	@extend .zigzag;
+}
+
+.zigzagTop {
+    position: relative;
+    width: 100%;
+    
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: -10px;
+        width: 100%;
+        height: 10px;
+        background:
+        linear-gradient(
+          45deg, transparent 33.333%,
+          #FFF 33.333%, #FFF 66.667%,
+          transparent 66.667%
+        ),
+        linear-gradient(
+          -45deg, transparent 33.333%,
+          #FFF 33.333%, #FFF 66.667%,
+          transparent 66.667%
+        );
+        background-size: 20px 40px;
+    }
 }
 
 .clear {

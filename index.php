@@ -9,6 +9,8 @@ $work_args = array (
 $work_query = new WP_Query( $work_args );
 
 get_header(); ?>
+
+<div id="main-container" class="zigzagTop">
 	
 <div id="work" name="work">
 
@@ -133,6 +135,8 @@ if ( !empty( $terms ) && !is_wp_error( $terms ) ) {
 </div><!-- grid-gallery -->
 </div><!-- work -->
 
+<div class="clear"></div>
+
 <div id="about">
 <?php
 	// get content of this page
@@ -154,15 +158,19 @@ if ( !empty( $terms ) && !is_wp_error( $terms ) ) {
 	<div class="zigzag-box"></div>
 	<?php $thumbnailUrl = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'page-thumbnail'); ?>
 
-	<div class="thumbnail" style="background-image:url(<?php echo $thumbnailUrl[0]; ?>)"></div>
+	<div id="aboutTop" class="thumbnail" style="background-image:url(<?php echo $thumbnailUrl[0]; ?>)"
+		data-bottom-top="background-position: 50% 0px;"
+        data-top-bottom="background-position: 50% -400px;"></div>
 	
-	<div class="content" name="about">
+	<div id="aboutContent" class="content" name="about">
 		<h2><?php the_title(); ?></h2>
 		<?php the_content(); ?>
 	</div>
 	<div class="zigzag-box"></div>
 	
-	<div class="thumbnail" style="background-image:url(<?php if (class_exists('MultiPostThumbnails')) : echo MultiPostThumbnails::get_post_thumbnail_url(get_post_type(), 'page-thumbnail-below', NULL,  'page-thumbnail'); endif; ?>)"></div>
+	<div id="aboutBottom" class="thumbnail" style="background-image:url(<?php if (class_exists('MultiPostThumbnails')) : echo MultiPostThumbnails::get_post_thumbnail_url(get_post_type(), 'page-thumbnail-below', NULL,  'page-thumbnail'); endif; ?>)"
+		data-bottom-top="background-position: 50% 0px;"
+        data-top-bottom="background-position: 50% -400px;"></div>
 		
 	<?php }} else { ?>
 	

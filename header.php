@@ -22,8 +22,14 @@
 <!-- jQuery isotope -->
 <script src="<?php bloginfo('template_url'); ?>/js/isotope.pkgd.min.js"></script>
 
-<!-- div js -->
+<!-- animateauto js -->
 <script src="<?php bloginfo('template_url'); ?>/js/animateauto.js"></script>
+
+<!-- jquery waypoints -->
+<script src="<?php bloginfo('template_url'); ?>/js/waypoints.min.js"></script>
+
+<!-- skrollr -->
+<script src="<?php bloginfo('template_url'); ?>/js/skrollr.js"></script>
 
 <!-- Functions -->
 <script src="<?php bloginfo('template_url'); ?>/js/functions.js"></script>
