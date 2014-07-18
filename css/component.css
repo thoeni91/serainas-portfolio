@@ -181,42 +181,6 @@
 	color: #31373a;
 }
 
-/* Info on arrow key navigation */
-.info-keys {
-	position: fixed;
-	top: 10px;
-	left: 10px;
-	width: 60px;
-	font-size: 8px;
-	padding-top: 20px;
-	text-transform: uppercase;
-	color: #fff;
-	letter-spacing: 1px;
-	text-align: center;
-}
-
-.info-keys:before,
-.info-keys:after {
-	position: absolute;
-	top: 0;
-	width: 16px;
-	height: 16px;
-	border: 1px solid #fff;
-	text-align: center;
-	line-height: 14px;
-	font-size: 12px;
-}
-
-.info-keys:before {
-	left: 10px;
-	content: "\e603";
-}
-
-.info-keys:after {
-	right: 10px;
-	content: "\e604";
-}
-
 /* Example media queries (reduce number of columns and change slideshow layout) */
 
 @media screen and (max-width: 60em) {

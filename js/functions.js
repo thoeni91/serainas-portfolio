@@ -16,14 +16,14 @@ getPilotImageHeight();
     
 // set height for #work
 $workHeight = $("#work").height() + 134;
-/*$("#work").css("height", $workHeight);*/
+$("#work").css("height", $workHeight);
     
 // filter items on button click
 $('#filters').on( 'click', 'a', function() {
  	var filterValue = $(this).attr('data-filter');
  	$container.isotope({ filter: filterValue }); 
  	$("#work").animateAuto("height", 300,function(){
-    	skrollr.refresh($(".thumbnail"));
+    	s.refresh($(".thumbnail"));
 	});
 });
 
@@ -60,7 +60,7 @@ $('#work').waypoint(function (direction) {
 	}
 }, { offset: '446px' });
     
-// refresh skrollr after site loaded completely
+// refresh skrollr after page loaded completely
 s.refresh();
 
 });
