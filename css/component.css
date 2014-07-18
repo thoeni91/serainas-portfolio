@@ -23,6 +23,7 @@
 .grid-gallery figure img {
 	display: block;
 	width: 100%;
+    height:auto;
 }
 
 .grid-gallery figcaption h3 {
@@ -54,10 +55,6 @@
 	padding: 13px;
 	-webkit-transition: opacity 0.2s;
 	transition: opacity 0.2s;
-}
-
-.grid li:hover figure {
-	opacity: 0.7;
 }
 
 .grid figcaption {
@@ -254,14 +251,23 @@
 
 }
 
-@media screen and (max-width: 35em) {
-	.grid li {
+@media screen and (max-width: 1160px) {
+	.grid-wrap {
+        width:826px;   
+    }
+    .grid li {
 		width: 50%;
 	}
 }
 
-@media screen and (max-width: 24em) {
-	.grid li {
+@media screen and (max-width:880px) {
+    .grid-wrap {
+        padding:0 100px;   
+    }
+    .grid-wrap, .grid li {
 		width: 100%;
 	}
+    .grid figure {
+        padding:13px 0;   
+    }
 }

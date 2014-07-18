@@ -12,8 +12,8 @@ add_theme_support( 'menus' );
 add_theme_support( 'post-thumbnails' ); 
 
 /* Image Sizes */
-add_image_size( 'work-small', 346 );
-add_image_size( 'page-thumbnail', 1600, 1200, true );
+add_image_size( 'work-small', 650 );
+add_image_size( 'page-thumbnail', 1920, 1200, true );
 
 /* Custom Post Type: Work */
 add_action( 'init', 'work_init' );

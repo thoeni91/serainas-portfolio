@@ -41,7 +41,6 @@
 
 <header>
 	<div id="headerContent">
-		
 		<?php wp_nav_menu( array ( 'container' => 'nav') ); ?>
 	</div>
 	<div id="headerImage" style="background-image:url(<?php echo get_header_image(); ?>)"></div>

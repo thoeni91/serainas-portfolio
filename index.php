@@ -60,6 +60,7 @@ if ( !empty( $terms ) && !is_wp_error( $terms ) ) {
 			<!-- Item, with specified types as class -->
 			<li id="item-<?php the_id(); ?>" class="item <?php echo $work_types; ?>">
 				<figure>
+                    <div class="title"><?php the_title(); ?></div>
 					<?php 
 						if ( has_post_thumbnail() ) { // check if the post has a Post Thumbnail assigned to it.
 						the_post_thumbnail('work-small');
@@ -98,7 +99,7 @@ if ( !empty( $terms ) && !is_wp_error( $terms ) ) {
 		?>
 	
 			<li id="singleItem-<?php the_id(); ?>">
-				<figure>
+				<figure onclick="window.event.cancelBubble = true">
 					<div class="left">
 						<div class="details">
 							<h2><?php the_title(); ?></h2>
@@ -158,9 +159,14 @@ if ( !empty( $terms ) && !is_wp_error( $terms ) ) {
 	<div class="zigzag-box"></div>
 	<?php $thumbnailUrl = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'page-thumbnail'); ?>
 
-	<div id="aboutTop" class="thumbnail" style="background-image:url(<?php echo $thumbnailUrl[0]; ?>)"
+    <img id="pilotImage" src="<?php bloginfo('template_url'); ?>/images/pilot.jpg" alt="Pilot" style="position:absolute; width:100%; height:auto; z-index:-10;" />
+	<div class="thumbnail" style="background-image:url(<?php echo $thumbnailUrl[0]; ?>)"
 		data-bottom-top="background-position: 50% 0px;"
         data-top-bottom="background-position: 50% -400px;"></div>
+        
+        
+    <!-- plan: unsichtbares image, dann höhe auslesen und übertragen -->
+    <!-- <img width="1600" height="1200" style="width:100%; height:auto;" /> -->
 	
 	<div id="aboutContent" class="content" name="about">
 		<h2><?php the_title(); ?></h2>
@@ -168,7 +174,7 @@ if ( !empty( $terms ) && !is_wp_error( $terms ) ) {
 	</div>
 	<div class="zigzag-box"></div>
 	
-	<div id="aboutBottom" class="thumbnail" style="background-image:url(<?php if (class_exists('MultiPostThumbnails')) : echo MultiPostThumbnails::get_post_thumbnail_url(get_post_type(), 'page-thumbnail-below', NULL,  'page-thumbnail'); endif; ?>)"
+	<div class="thumbnail" style="background-image:url(<?php if (class_exists('MultiPostThumbnails')) : echo MultiPostThumbnails::get_post_thumbnail_url(get_post_type(), 'page-thumbnail-below', NULL,  'page-thumbnail'); endif; ?>)"
 		data-bottom-top="background-position: 50% 0px;"
         data-top-bottom="background-position: 50% -400px;"></div>
 		

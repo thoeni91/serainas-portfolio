@@ -79,6 +79,9 @@
 		this.ctrlPrev = this.el.querySelector( 'section.slideshow > nav > span.nav-prev' );
 		this.ctrlNext = this.el.querySelector( 'section.slideshow > nav > span.nav-next' );
 		this.ctrlClose = this.el.querySelector( 'section.slideshow > nav > span.nav-close' );
+        // define two additional areas to prevent close event in specific areas
+        this.clickClose = this.el.querySelector( 'section.slideshow' );
+        this.navClick = this.el.querySelector( 'section.slideshow nav' );
 		// init masonry grid
 		this._initMasonry();
 		// init events
@@ -109,6 +112,10 @@
 		this.ctrlPrev.addEventListener( 'click', function() { self._navigate( 'prev' ); } );
 		this.ctrlNext.addEventListener( 'click', function() { self._navigate( 'next' ); } );
 		this.ctrlClose.addEventListener( 'click', function() { self._closeSlideshow(); } );
+        // close on click in white space
+        this.clickClose.addEventListener( 'click', function() { self._closeSlideshow(); } );
+        // do nothing if click occurs in nav area
+        this.navClick.addEventListener( 'click', function() { window.event.cancelBubble = true; } );
 
 		// window resize
 		window.addEventListener( 'resize', function() { self._resizeHandler(); } );
