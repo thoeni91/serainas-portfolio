@@ -1,8 +1,8 @@
 <?php
 
-// WP_Query arguments
+ // WP_Query arguments
 $work_args = array (
-	'post_type'	=> 'work',
+	'post_type'			=> 'work'
 );
 
 // The Query
@@ -137,58 +137,47 @@ if ( !empty( $terms ) && !is_wp_error( $terms ) ) {
 </div><!-- work -->
 
 <div class="clear"></div>
-
-<div id="about">
+    <img id="pilotImage" src="<?php bloginfo('template_url'); ?>/images/pilot.jpg" alt="Pilot" style="position:absolute; width:100%; height:auto; z-index:-10;" />
 <?php
-	// get content of this page
-    // WP_Query arguments
-	$args = array (
-		'pagename'               => 'about',
-		'post_type'              => 'page',
-		'pagination'             => false,
-	);
-
+	// get all pages
 	// The Query
-	$about = new WP_Query( $args );
+    $page_query = new WP_Query(array(
+        'post_type'         => 'page',
+        'order'             => 'ASC',
+        'orderby'           => 'menu_order',
+        'category__not_in'  => 22
+    ));
 
 	// The Loop
-	if ( $about->have_posts() ) {
-		while ( $about->have_posts() ) {
-			$about->the_post();
+    if ( $page_query->have_posts() ) : while ( $page_query->have_posts() ) : $page_query->the_post();
 ?>
+    
+    <div id="<?php echo($post->post_name) ?>" class="page">
+    
 	<div class="zigzag-box"></div>
 	<?php $thumbnailUrl = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'page-thumbnail'); ?>
-
-    <img id="pilotImage" src="<?php bloginfo('template_url'); ?>/images/pilot.jpg" alt="Pilot" style="position:absolute; width:100%; height:auto; z-index:-10;" />
+    
+    <?php if( has_post_thumbnail() ) { ?>
 	<div class="thumbnail" style="background-image:url(<?php echo $thumbnailUrl[0]; ?>)"
 		data-bottom-top="background-position: 50% 0px;"
-        data-top-bottom="background-position: 50% -400px;"></div>
-        
-        
-    <!-- plan: unsichtbares image, dann höhe auslesen und übertragen -->
-    <!-- <img width="1600" height="1200" style="width:100%; height:auto;" /> -->
+        data-top-bottom="background-position: 50% -600px;"></div>
+    <?php } ?>
 	
-	<div id="aboutContent" class="content" name="about">
+	<div class="content" name="<?php echo($post->post_name) ?>">
 		<h2><?php the_title(); ?></h2>
 		<?php the_content(); ?>
 	</div>
 	<div class="zigzag-box"></div>
-	
-	<div class="thumbnail" style="background-image:url(<?php if (class_exists('MultiPostThumbnails')) : echo MultiPostThumbnails::get_post_thumbnail_url(get_post_type(), 'page-thumbnail-below', NULL,  'page-thumbnail'); endif; ?>)"
+	<?php if (class_exists('MultiPostThumbnails') && (MultiPostThumbnails::get_post_thumbnail_url(get_post_type(), 'page-thumbnail-below', NULL,  'page-thumbnail') != "")) { ?>
+	<div class="thumbnail" style="background-image:url(<?php echo MultiPostThumbnails::get_post_thumbnail_url(get_post_type(), 'page-thumbnail-below', NULL,  'page-thumbnail'); ?>)"
 		data-bottom-top="background-position: 50% 0px;"
-        data-top-bottom="background-position: 50% -400px;"></div>
-		
-	<?php }} else { ?>
-	
-	<div>Du hast die About Seite gelöscht... *facepalm*</div>
-	
-	<?php }
-	
-	// Restore original Post Data
-	wp_reset_postdata();
-?>
-
-</div><!-- about -->
+        data-top-bottom="background-position: 50% -600px;"></div>
+    <?php } ?>
+        
+    </div>	
+	<?php endwhile; else: ?>
+        <p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
+    <?php endif; ?>
 
 
 <?php get_footer(); ?>

@@ -13,10 +13,17 @@ add_theme_support( 'post-thumbnails' );
 
 /* Image Sizes */
 add_image_size( 'work-small', 650 );
-add_image_size( 'page-thumbnail', 1920, 1200, true );
+add_image_size( 'page-thumbnail', 1920, 1400, true );
 
 /* Custom Post Type: Work */
 add_action( 'init', 'work_init' );
+
+function myplugin_settings() { 
+// Add category metabox to page
+register_taxonomy_for_object_type('category', 'page');  
+}
+ // Add to the admin_init hook of your theme functions.php file 
+add_action( 'admin_init', 'myplugin_settings' );
 
 function work_init() {
 	$labels = array(
@@ -151,7 +158,6 @@ function workDetail_save_meta_box_data( $post_id ) {
 	if ( isset( $_POST['status'] ) ) {
 		update_post_meta( $post_id, 'status', $_POST['status'] );
 	}
-
 	
 }
 add_action( 'save_post', 'workDetail_save_meta_box_data' );

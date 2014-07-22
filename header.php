@@ -30,6 +30,9 @@
 
 <!-- skrollr -->
 <script src="<?php bloginfo('template_url'); ?>/js/skrollr.js"></script>
+    
+<!-- skrollr -->
+<script src="<?php bloginfo('template_url'); ?>/js/jquery.infinitescroll.min.js"></script>
 
 <!-- Functions -->
 <script src="<?php bloginfo('template_url'); ?>/js/functions.js"></script>

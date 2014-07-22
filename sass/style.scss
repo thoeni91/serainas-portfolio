@@ -88,7 +88,7 @@ header {
 		
 		&.fixed {
 			position: fixed;
-			line-height:normal;
+			line-height:normal !important;
 			padding:30px;
 			background:#fff;
             -webkit-transition: background 0.5s ease;
@@ -163,7 +163,6 @@ header {
         overflow: hidden;
         .title {
             position:absolute;
-            max-width:346px;
             width:100%;
             top:-57px;
             padding:20px;
@@ -228,7 +227,7 @@ header {
 	}
 }
 
-#about {
+.page {
 	.thumbnail {
         max-height:800px;
 		@extend .zigzag;

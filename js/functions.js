@@ -1,4 +1,7 @@
 $(window).load(function() {
+    
+// make headerImage same height as browser
+setHeaderImageHeight();
 
 var $container = $('#grid-gallery .grid');
 	// init
@@ -9,7 +12,7 @@ var $container = $('#grid-gallery .grid');
 });
     
 // init skrollr
-s = skrollr.init({forceHeight: false, smoothScrollingDuration:100});
+s = skrollr.init({forceHeight: false, smoothScrolling:false, smoothScrollingDuration:300});
     
 // run function for pilot image
 getPilotImageHeight();
@@ -22,9 +25,7 @@ $("#work").css("height", $workHeight);
 $('#filters').on( 'click', 'a', function() {
  	var filterValue = $(this).attr('data-filter');
  	$container.isotope({ filter: filterValue }); 
- 	$("#work").animateAuto("height", 300,function(){
-    	s.refresh($(".thumbnail"));
-	});
+ 	$("#work").animateAuto("height", 300);
 });
 
 // set selected menu items
@@ -50,15 +51,53 @@ $('nav a').click(function(){
     return false;
 });
 
-// init waypoint
-$('#work').waypoint(function (direction) {
-	if (direction == 'down') {
-		$('#headerContent').addClass('fixed');
-	}
-	else {
-		$('#headerContent').removeClass('fixed');
-	}
-}, { offset: '446px' });
+setNavWaypoint();
+    
+    
+/*// infinite scroll super function 
+$container.infinitescroll({
+    navSelector  : "#pageNav",            
+    // selector for the paged navigation (it will be hidden)
+    nextSelector : "#pageNav a",    
+    // selector for the NEXT link (to page 2)
+    itemSelector : "#work .item",        
+    // selector for all items you'll retrieve
+    loadingImg   : "/img/loading.gif",          
+                 // loading image.
+                 // default: "http://www.infinite-scroll.com/loading.gif"
+    loadingText  : "",      
+                 // text accompanying loading image
+                 // default: "<em>Loading the next set of posts...</em>"
+    donetext     : "",
+                 // text displayed when all items have been retrieved
+                 // default: "<em>Congratulations, you've reached the end of the internet.</em>"
+  },
+  // trigger isotope as a callback
+  function( newElements ) {
+    var $newElems = $( newElements );
+    $container.isotope( 'appended', $newElems );
+    $("#work").animateAuto("height", 300);
+  }
+);
+
+var $slideshowContainer = $('.slideshow ul');
+$slideshowContainer.infinitescroll({
+    navSelector  : "#pageNav",            
+    // selector for the paged navigation (it will be hidden)
+    nextSelector : "#pageNav a",    
+    // selector for the NEXT link (to page 2)
+    itemSelector : "#work .itemPopup",        
+    // selector for all items you'll retrieve
+    loadingImg   : "",          
+                 // loading image.
+                 // default: "http://www.infinite-scroll.com/loading.gif"
+    loadingText  : "",      
+                 // text accompanying loading image
+                 // default: "<em>Loading the next set of posts...</em>"
+    donetext     : "",
+                 // text displayed when all items have been retrieved
+                 // default: "<em>Congratulations, you've reached the end of the internet.</em>"
+  });*/
     
 // refresh skrollr after page loaded completely
 s.refresh();
@@ -67,10 +106,32 @@ s.refresh();
 
 // on window resize
 $( window ).resize(function() {
+    setHeaderImageHeight();
     getPilotImageHeight();
 });
 
 // functions
+
+function setHeaderImageHeight() {
+    browserHeight = $(window).height();
+    $("#headerImage").css("height", browserHeight + "px");
+    $("#headerContent").css("line-height", browserHeight + "px");
+    $("#main-container").css("top", (browserHeight+22) + "px"); 
+    setNavWaypoint();
+}
+
+function setNavWaypoint() {
+    // init waypoint
+    $('#headerContent').removeClass('fixed');
+    $('#work').waypoint(function (direction) {
+        if (direction == 'down') {
+            $('#headerContent').addClass('fixed');
+        }
+        else {
+            $('#headerContent').removeClass('fixed');
+        }
+    }, { offset: browserHeight/2+46 + 'px' }); 
+}
 
 // get dimenions of pilot image and give it to .thumbnails
 function getPilotImageHeight() {
