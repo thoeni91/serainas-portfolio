@@ -27,9 +27,20 @@
 <script src="<?php bloginfo('template_url'); ?>/js/imagesloaded.pkgd.min.js"></script>
 <script src="<?php bloginfo('template_url'); ?>/js/masonry.pkgd.min.js"></script>
 <script src="<?php bloginfo('template_url'); ?>/js/classie.js"></script>
-<script src="<?php bloginfo('template_url'); ?>/js/cbpGridGallery.js"></script>
-<script>
-	new CBPGridGallery( document.getElementById( 'grid-gallery' ) );
+<!--<script src="<?php bloginfo('template_url'); ?>/js/cbpGridGallery.js"></script>-->
+<!--cripple browser support -->
+<script type="text/javascript">
+// if crappy problembrowser aka Firefox
+if ( $.browser.mozilla == true ) {
+    $.getScript( template_url + "/js/cbpGridGallery-ff.js", function() {
+        new CBPGridGallery( document.getElementById( 'grid-gallery' ) );
+    });
+// If good browser
+} else {
+    $.getScript( template_url + "/js/cbpGridGallery.js", function() {
+        new CBPGridGallery( document.getElementById( 'grid-gallery' ) );
+    });
+}
 </script>
 </body>
 </html>

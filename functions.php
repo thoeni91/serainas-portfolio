@@ -13,7 +13,7 @@ add_theme_support( 'post-thumbnails' );
 
 /* Image Sizes */
 add_image_size( 'work-small', 650 );
-add_image_size( 'page-thumbnail', 1920, 1400, true );
+add_image_size( 'page-thumbnail', 1920, 1600, true );
 
 /* Custom Post Type: Work */
 add_action( 'init', 'work_init' );
@@ -25,6 +25,22 @@ register_taxonomy_for_object_type('category', 'page');
  // Add to the admin_init hook of your theme functions.php file 
 add_action( 'admin_init', 'myplugin_settings' );
 
+
+// Custom login logo
+function my_login_logo() { ?>
+    <style type="text/css">
+        body.login div#login h1 a {
+        	width:300px;
+        	height:50px;
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/serainacavigelli_navy.svg);
+            background-size: 300px 50px;
+            padding-bottom: 30px;
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
+
+// Custom post type --> Work
 function work_init() {
 	$labels = array(
 		'name'               => _x( 'Work', 'post type general name' ),

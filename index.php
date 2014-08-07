@@ -30,6 +30,19 @@ if ( !empty( $terms ) && !is_wp_error( $terms ) ) {
     $term_list .= '</div>';
     echo $term_list;
 }
+
+$terms = get_terms('types', $args);
+if ( !empty( $terms ) && !is_wp_error( $terms ) ) {
+    $count = count($terms);
+    $i=0;
+    $term_list = '<select id="filters"><option data-filter="*">Alle</option>';
+    foreach ($terms as $term) {
+        $i++;
+    	$term_list .= '<option data-filter=".' . $term->slug . '" title="' . sprintf(__('Filtern nach %s', 'my_localization_domain'), $term->name) . '">' . $term->name . '</option>';
+    }
+    $term_list .= '</select>';
+    echo $term_list;
+}
 ?>
 
 <!-- Google Grid Gallery starts here -->
@@ -159,19 +172,19 @@ if ( !empty( $terms ) && !is_wp_error( $terms ) ) {
     
     <?php if( has_post_thumbnail() ) { ?>
 	<div class="thumbnail" style="background-image:url(<?php echo $thumbnailUrl[0]; ?>)"
-		data-bottom-top="background-position: 50% 0px;"
-        data-top-bottom="background-position: 50% -600px;"></div>
+		data-bottom-top="background-position: 50% 0%;"
+        data-top-bottom="background-position: 50% 75%;"></div>
     <?php } ?>
 	
-	<div class="content" name="<?php echo($post->post_name) ?>">
+	<div class="pageContent" name="<?php echo($post->post_name) ?>">
 		<h2><?php the_title(); ?></h2>
 		<?php the_content(); ?>
 	</div>
 	<div class="zigzag-box"></div>
 	<?php if (class_exists('MultiPostThumbnails') && (MultiPostThumbnails::get_post_thumbnail_url(get_post_type(), 'page-thumbnail-below', NULL,  'page-thumbnail') != "")) { ?>
 	<div class="thumbnail" style="background-image:url(<?php echo MultiPostThumbnails::get_post_thumbnail_url(get_post_type(), 'page-thumbnail-below', NULL,  'page-thumbnail'); ?>)"
-		data-bottom-top="background-position: 50% 0px;"
-        data-top-bottom="background-position: 50% -600px;"></div>
+		data-bottom-top="background-position: 50% 0%;"
+        data-top-bottom="background-position: 50% 50%;"></div>
     <?php } ?>
         
     </div>	

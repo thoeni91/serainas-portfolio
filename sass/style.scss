@@ -57,16 +57,32 @@ body {
 	color:$darkBlue;
 }
 
+a img {
+    border:none;   
+}
+
+a {
+    outline:none;
+}
+
 header {
 	position:relative;
 	
 	#headerContent {
-		position: absolute;
-		width: 100%;
-		line-height: 800px;
+        display:none;
+		position: fixed;
+        width:100%;
 		text-align: center;
 		z-index: 5;
-        background: none;
+        background:none;
+        
+        #logo {
+            display:block;
+            width:20%;
+            min-width:300px;
+            height:auto;
+            margin:0 auto 20px auto;
+        }
 		
 		nav {
 			ul {
@@ -80,17 +96,23 @@ header {
 						color: #fff;
 						font-size: 20px;
 						font-weight:light;
+                        border-color:#fff !important;
 					}
+                    
+                    &:last-child {
+                        margin-right:0;   
+                    }
 				}
-				
 			}
 		}
 		
-		&.fixed {
-			position: fixed;
-			line-height:normal !important;
-			padding:30px;
-			background:#fff;
+		&.scrolled {
+            width:100%;
+            margin:0 !important;
+			padding:30px 0;
+            top:0 !important;
+            left:0;
+            background:#EFF2F2;
             -webkit-transition: background 0.5s ease;
             -moz-transition: background 0.5s ease;
             -o-transition: background 0.5s ease;
@@ -101,6 +123,7 @@ header {
 					li{
 						a {
 							color:$darkBlue;
+                            border-color:#273a4f !important;
 						}
 					}
 				}
@@ -109,7 +132,7 @@ header {
 	}
 
 	#headerImage {
-		height: 800px;
+        display:none;
 		background-repeat: no-repeat;
 		background-position: center center;
 		-webkit-background-size: cover;
@@ -119,16 +142,27 @@ header {
         position:fixed;
         width:100%;
 	}
+    
+    #arrow {
+        position:absolute;
+        display:block;
+        width:100px;
+        height:38px;
+        left:50%;
+        margin-left:-50px;
+        bottom:50px;
+        background:url(images/arrow.png) no-repeat;
+    }
 }
 
 #main-container {
-    background:#fff;
+    background:#EFF2F2;
     position:relative;
     top:800px;
 }
 	
 #work {
-	padding:67px 0;
+	padding:130px 0 0 0;
 	
 	#filters {
 		width: 100%;
@@ -158,19 +192,19 @@ header {
 
 /* Google Grid Gallery */
 .grid-wrap {
+    padding-bottom:78px;
     figure {
         position:relative;
         overflow: hidden;
         .title {
             position:absolute;
-            width:100%;
             top:-57px;
             padding:20px;
             font-family: Brandon Grotesque Bold;
             z-index:1;
             text-align: center;
             text-transform: uppercase;
-            background-color: rgba(255,255,255, 0.5);
+            background-color: rgba(239,242,242, 0.5);
             -webkit-transition: top 0.4s ease;
             -moz-transition: top 0.4s ease;
             -o-transition: top 0.4s ease;
@@ -190,11 +224,11 @@ header {
 		.left {
 			position: absolute;
 			width:346px;
+			float:left;
 			
 			.details {
 				margin-bottom:25px;
 				border-bottom:1px solid $darkBlue;
-				overflow-y:scroll;
 			
 				h2 {
 					@extend .h2;
@@ -207,11 +241,15 @@ header {
 					font-size:20px;
 					letter-spacing: 3px;
 				}
+			}
+            
+            .excerpt {
+                overflow-y:auto;
                 
                 &::-webkit-scrollbar { 
                     display: none; 
                 }
-			}
+            }
 		}
 		
 		.right {
@@ -219,6 +257,11 @@ header {
 			width:719px;
 			margin-left:371px;
 			z-index: 3;
+            overflow-y:auto;
+            
+            &::-webkit-scrollbar { 
+                display: none; 
+            }
 		}
 		
 		p {
@@ -230,6 +273,12 @@ header {
 .page {
 	.thumbnail {
         max-height:800px;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
 		@extend .zigzag;
         
         &.overWidth {
@@ -241,7 +290,7 @@ header {
         }
 	}
 
-	.content {
+	.pageContent {
 		max-width:600px;
 		margin:0 auto;
 		padding:100px 0;
@@ -282,7 +331,7 @@ header {
 
 // Special classes
 .zigzag {
-	-webkit-mask-image: linear-gradient(0deg, transparent 22px, white 22px), linear-gradient(-135deg, white 11px, transparent 11px), linear-gradient(135deg, white 11px, transparent 11px);
+	-webkit-mask-image: linear-gradient(0deg, transparent 22px, #eff2f2 22px), linear-gradient(-135deg, #eff2f2 11px, transparent 11px), linear-gradient(135deg, #eff2f2 11px, transparent 11px);
     -webkit-mask-position: right bottom;
     -webkit-mask-repeat: repeat-x;
     -webkit-mask-size: 100% 100%, 22px 22px, 22px 22px;
@@ -300,7 +349,7 @@ header {
 	width:100%;
 	height:22px;
 	margin-bottom:-22px;
-	background:#fff;
+	background:#eff2f2;
 	z-index: 2;
 	@extend .zigzag;
 }
@@ -319,12 +368,12 @@ header {
         background:
         linear-gradient(
           45deg, transparent 33.333%,
-          #FFF 33.333%, #FFF 66.667%,
+          #eff2f2 33.333%, #eff2f2 66.667%,
           transparent 66.667%
         ),
         linear-gradient(
           -45deg, transparent 33.333%,
-          #FFF 33.333%, #FFF 66.667%,
+          #eff2f2 33.333%, #eff2f2 66.667%,
           transparent 66.667%
         );
         background-size: 20px 40px;
@@ -337,7 +386,6 @@ header {
     -ms-filter: grayscale(100%);
     -o-filter: grayscale(100%);
     filter: grayscale(100%);
-    filter: url(images/grayscale.svg); /* Firefox 4+ */
     filter: gray; /* IE 6-9 */
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -356,6 +404,12 @@ header {
 
 .clear {
 	clear: both;
+}
+
+// ie10 special treatment
+html[data-useragent*='MSIE 10.0'] #logo {
+    width:300px !important;
+    height:50px !important;
 }
 
 @media only screen and (max-width:1160px) {
